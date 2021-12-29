@@ -18,7 +18,7 @@ campsiteRouter
     Campsite.create(req.body)
       .then((campsite) => {
         console.log("Campsite Created ", campsite);
-        res.statusCode = 200;
+        res.statusCode = 201;
         res.setHeader("Content-Type", "application/json");
         res.json(campsite);
       })
@@ -129,7 +129,7 @@ campsiteRouter
     Campsite.findById(req.params.campsiteId)
       .then((campsite) => {
         if (campsite) {
-          for (let i = (campsite.comments.length - 1); i >= 0; i--) {
+          for (let i = campsite.comments.length - 1; i >= 0; i--) {
             campsite.comments.id(campsite.comments[i]._id).remove();
           }
           campsite

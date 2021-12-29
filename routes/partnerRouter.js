@@ -17,7 +17,7 @@ partnerRouter
     Partner.create(req.body)
       .then((partner) => {
         console.log("Partner Created ", partner);
-        res.statusCode = 200;
+        res.statusCode = 201;
         res.setHeader("Content-Type", "application/json");
         res.json(partner);
       })
